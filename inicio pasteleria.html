@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Inicio - Camixu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6eb; /* rosa pastel */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      color: #d1003f; /* rojo cereza */
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 200px;
+      height: auto;
+      margin-bottom: 30px;
+    }
+
+    .btn-entrar {
+      background-color: #d1003f; /* rojo cereza */
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(209, 0, 63, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-entrar:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 25px rgba(209, 0, 63, 0.6);
+      background-color: #b80036;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Bienvenido a Pastelería Camixu</h1>
+  
+  <img src="HK.JPEG" alt="Logo Camixu" class="logo">
+
+  <button class="btn-entrar" onclick="entrar()">Entrar</button>
+
+  <script>
+    function entrar() {
+      window.location.href = "segpag.html"; // ← Ahora lleva a la segunda página
+    }
+  </script>
+
+</body>
+</html>
+

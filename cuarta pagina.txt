@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elige tu Topping - Camixu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #fff0f5;
+      font-family: 'Segoe UI', sans-serif;
+      color: #d1003f;
+    }
+
+    h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .opciones {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .item {
+      background: #ffe6eb;
+      padding: 15px;
+      border-radius: 15px;
+      border: 1px solid #d1003f;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(209, 0, 63, 0.1);
+    }
+
+    .item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .item span {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .especificaciones {
+      width: 100%;
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+
+    .agregar-btn {
+      background-color: #d1003f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .agregar-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(209, 0, 63, 0.4);
+      background-color: #b80036;
+    }
+
+    .carrito {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #ffe6eb;
+      border: 2px solid #d1003f;
+      border-radius: 15px;
+      padding: 15px;
+      width: 250px;
+      z-index: 1000;
+      box-shadow: 0 6px 15px rgba(209, 0, 63, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .carrito h3 {
+      font-size: 22px;
+      margin-top: 0;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .carrito h3::before {
+      content: "🎂";
+      font-size: 24px;
+    }
+
+    .carrito-lista {
+      font-size: 16px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .carrito-lista li {
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .eliminar-btn {
+      background: none;
+      border: none;
+      color: #d1003f;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .botones-nav {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .botones-nav button {
+      background-color: #d1003f;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin: 10px;
+    }
+
+    .botones-nav button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(209, 0, 63, 0.6);
+      background-color: #b80036;
+    }
+
+    /* Estilos para botón Hacer Pedido */
+    #hacer-pedido {
+      background-color: #d1003f;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(209, 0, 63, 0.4);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      align-self: center;
+    }
+
+    #hacer-pedido:hover {
+      transform: scale(1.15);
+      box-shadow: 0 8px 20px rgba(209, 0, 63, 0.8);
+      background-color: #b80036;
+      animation: pulse 1s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 5px #d1003f, 0 0 10px #d1003f;
+      }
+      100% {
+        box-shadow: 0 0 20px #ff497c, 0 0 40px #ff497c;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carrito">
+    <h3>Tu Pastel</h3>
+    <ul class="carrito-lista" id="carrito-lista"></ul>
+    <button id="hacer-pedido" onclick="hacerPedido()">Hacer pedido</button>
+  </div>
+
+  <h2>Elige tu Topping</h2>
+
+  <div class="opciones">
+    <div class="item">
+      <img src="img/chispas.jpeg" alt="Chispas de Chocolate" />
+      <span>Chispas de Chocolate</span>
+      <input type="text" class="especificaciones" placeholder="Especificaciones..." />
+      <button class="agregar-btn" onclick="agregarAlCarrito(this, 'Chispas de Chocolate')">Agregar</button>
+    </div>
+
+    <div class="item">
+      <img src="img/fruta.jpeg" alt="Fruta" />
+      <span>Fruta</span>
+      <input type="text" class="especificaciones" placeholder="Especificaciones..." />
+      <button class="agregar-btn" onclick="agregarAlCarrito(this, 'Fruta')">Agregar</button>
+    </div>
+
+    <div class="item">
+      <img src="img/fondant.jpeg" alt="Fondant" />
+      <span>Fondant</span>
+      <input type="text" class="especificaciones" placeholder="Especificaciones..." />
+      <button class="agregar-btn" onclick="agregarAlCarrito(this, 'Fondant')">Agregar</button>
+    </div>
+
+    <div class="item">
+      <img src="img/diamantina.jpeg" alt="Diamantina comestible" />
+      <span>Diamantina</span>
+      <input type="text" class="especificaciones" placeholder="Especificaciones..." />
+      <button class="agregar-btn" onclick="agregarAlCarrito(this, 'Diamantina')">Agregar</button>
+    </div>
+  </div>
+
+  <div class="botones-nav">
+    <button onclick="location.href='terpag.html'">← Volver</button>
+  </div>
+
+  <script>
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    function agregarAlCarrito(btn, nombre) {
+      const itemDiv = btn.parentElement;
+      const especificaciones = itemDiv.querySelector('.especificaciones').value;
+      const itemTexto = `${nombre}${especificaciones ? ' - ' + especificaciones : ''}`;
+      carrito.push(itemTexto);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      const lista = document.getElementById('carrito-lista');
+      lista.innerHTML = '';
+      carrito.forEach((item, index) => {
+        const li = document.createElement('li');
+        const texto = document.createElement('span');
+        texto.textContent = `${index + 1}. ${item}`;
+        const boton = document.createElement('button');
+        boton.innerHTML = '🗑️';
+        boton.className = 'eliminar-btn';
+        boton.onclick = () => eliminarDelCarrito(index);
+        li.appendChild(texto);
+        li.appendChild(boton);
+        lista.appendChild(li);
+      });
+    }
+
+    function eliminarDelCarrito(index) {
+      carrito.splice(index, 1);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      actualizarCarrito();
+    }
+
+    function hacerPedido() {
+      // Redirige a quintpag.html
+      location.href = 'quintpag.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', actualizarCarrito);
+  </script>
+</body>
+</html>

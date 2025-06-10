@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elige tu pastel - Camixu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #fff0f5;
+      font-family: 'Segoe UI', sans-serif;
+      color: #d1003f;
+    }
+
+    h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sabores {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .sabor-item {
+      background: #ffe6eb;
+      padding: 15px;
+      border-radius: 15px;
+      border: 1px solid #d1003f;
+      width: 220px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(209, 0, 63, 0.1);
+    }
+
+    .sabor-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .sabor-item span {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .agregar-btn {
+      background-color: #d1003f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .agregar-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 15px rgba(209, 0, 63, 0.4);
+      background-color: #b80036;
+    }
+
+    .carrito {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #ffe6eb;
+      border: 2px solid #d1003f;
+      border-radius: 15px;
+      padding: 15px;
+      width: 250px;
+      z-index: 1000;
+      box-shadow: 0 6px 15px rgba(209, 0, 63, 0.2);
+    }
+
+    .carrito h3 {
+      font-size: 22px;
+      margin-top: 0;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .carrito h3::before {
+      content: "🎂";
+      font-size: 24px;
+    }
+
+    .carrito-lista {
+      font-size: 16px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .carrito-lista li {
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .eliminar-btn {
+      background: none;
+      border: none;
+      color: #d1003f;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .boton-regresar,
+    .boton-siguiente {
+      background-color: #d1003f;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Segoe UI', sans-serif;
+      box-shadow: 0 4px 8px rgba(209, 0, 63, 0.3);
+      margin: 10px;
+    }
+
+    .boton-regresar:hover,
+    .boton-siguiente:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(209, 0, 63, 0.6);
+      background-color: #b80036;
+    }
+
+    .contenedor-botones {
+      text-align: center;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carrito">
+    <h3>Tu Pastel</h3>
+    <ul class="carrito-lista" id="carrito-lista"></ul>
+  </div>
+
+  <!-- Botones de navegación -->
+  <div class="contenedor-botones">
+    <button class="boton-regresar" onclick="location.href='inicio pasteleria.html'">← Regresar a Inicio</button>
+    <button class="boton-siguiente" onclick="location.href='terpag.html'">Continuar →</button>
+  </div>
+
+  <h2>Elige tu pastel</h2>
+
+  <div class="sabores">
+    <div class="sabor-item">
+      <img src="img/chocolate.JPEG" alt="Pastel de Chocolate" />
+      <span>Chocolate</span>
+      <button class="agregar-btn" onclick="agregarAlCarrito('Chocolate')">Agregar</button>
+    </div>
+
+    <div class="sabor-item">
+      <img src="img/vainilla.JPEG" alt="Pastel de Vainilla" />
+      <span>Vainilla</span>
+      <button class="agregar-btn" onclick="agregarAlCarrito('Vainilla')">Agregar</button>
+    </div>
+
+    <div class="sabor-item">
+      <img src="img/fresa.JPEG" alt="Pastel de Fresa" />
+      <span>Fresa</span>
+      <button class="agregar-btn" onclick="agregarAlCarrito('Fresa')">Agregar</button>
+    </div>
+
+    <div class="sabor-item">
+      <img src="img/redvelvet.JPEG" alt="Pastel Red Velvet" />
+      <span>Red Velvet</span>
+      <button class="agregar-btn" onclick="agregarAlCarrito('Red Velvet')">Agregar</button>
+    </div>
+
+    <div class="sabor-item">
+      <img src="img/tresleches.JPEG" alt="Pastel Tres Leches" />
+      <span>Tres Leches</span>
+      <button class="agregar-btn" onclick="agregarAlCarrito('Tres Leches')">Agregar</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      actualizarCarrito(carrito);
+    });
+
+    function agregarAlCarrito(sabor) {
+      let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      carrito.push(sabor);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      actualizarCarrito(carrito);
+    }
+
+    function eliminarDelCarrito(index) {
+      let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      carrito.splice(index, 1);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      actualizarCarrito(carrito);
+    }
+
+    function actualizarCarrito(carrito) {
+      const lista = document.getElementById('carrito-lista');
+      lista.innerHTML = '';
+      carrito.forEach((sabor, index) => {
+        const item = document.createElement('li');
+
+        const texto = document.createElement('span');
+        texto.textContent = `${index + 1}. ${sabor}`;
+
+        const boton = document.createElement('button');
+        boton.innerHTML = '🗑️';
+        boton.className = 'eliminar-btn';
+        boton.onclick = () => eliminarDelCarrito(index);
+
+        item.appendChild(texto);
+        item.appendChild(boton);
+
+        lista.appendChild(item);
+      });
+    }
+  </script>
+
+</body>
+</html>
